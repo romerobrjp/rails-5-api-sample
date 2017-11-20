@@ -3,4 +3,5 @@ class Campus < ApplicationRecord
   belongs_to :university
 
   validates_presence_of :name, :city
+  validates_uniqueness_of :name
 end
