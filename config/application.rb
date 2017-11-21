@@ -29,5 +29,8 @@ module Punkapi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # redis config
+    config.cache_store = :redis_store, "redis://#{ENV['REDIS_HOST']}/#{ENV['REDIS_PORT']}/0/cache", { expires_in: 90.minutes }
   end
 end
