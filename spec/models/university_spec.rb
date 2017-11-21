@@ -23,8 +23,14 @@ RSpec.describe University, type: :model do
   end
 
   context 'acronym' do
-    it 'is composed by the initial letters from the name attribute' do
-      expect(university.acronym).to eq(university.name.split(' ').map { |word| word[0] }.join)
+    let(:university_with_prepositions) { build(:university, :prepositions_in_name) }
+
+    it 'accepts name without prepositions' do
+      expect(university.acronym.length).to be >= (university.name.split(' ').select { |word| word[0] == word[0].upcase }.length)
+    end
+
+    it 'accepts name with prepositions' do
+      expect(university_with_prepositions.acronym.length).to be >= (university_with_prepositions.name.split(' ').select { |word| word[0] == word[0].upcase }.length)
     end
   end
 end
