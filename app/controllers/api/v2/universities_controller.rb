@@ -27,10 +27,13 @@ class Api::V2::UniversitiesController < ApplicationController
 
   def update
     if @university
-      university = @university.update(university_params)
-      render json: university, status: 200
+      if @university.update_attributes(university_params)
+        render json: @university, status: 200
+      else
+        render json: { errors: @university.errors }, status: 422
+      end
     else
-      render json: { errors: university_params.errors }, status: 422
+      render json: { errors: university_params.errors }, status: 404
     end
   end
 
