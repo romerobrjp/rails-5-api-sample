@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :campus do
-    name { Faker::Educator.campus }
+    name { |n| Faker::Educator.campus + "#{n}" }
     city { Faker::ElderScrolls.region }
   end
 end
