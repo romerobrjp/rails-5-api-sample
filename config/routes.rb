@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     end
 
     namespace :v2, constraints: ApiVersionConstraint.new(version: 2, default: true) do
-      resources :universities
+      resources :universities do
+        get :find_by_acronym, to: 'universities#find_by_acronym', on: :collection
+      end
       resources :campuses
       resources :professors
       resources :disciplines

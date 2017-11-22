@@ -41,6 +41,16 @@ class Api::V2::UniversitiesController < ApplicationController
     render(nothing: true, status: 204) if @university.destroy
   end
 
+  def find_by_acronym
+    university = University.find_by(acronym: university_params[:acronym])
+
+    if university.present?
+      render json: university, status: 200
+    else
+      head 404
+    end
+  end
+
   private
 
   def university_params

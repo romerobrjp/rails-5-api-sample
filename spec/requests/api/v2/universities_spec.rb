@@ -19,8 +19,8 @@ RSpec.describe 'Universities API', type: :request do
       end
 
       it 'returns the universities' do
-        universities_response = JSON.parse(response.body)
-        expect(universities_response.length).to eq(5)
+        parsed_response = JSON.parse(response.body)
+        expect(parsed_response.length).to eq(5)
       end
 
       it 'returns status code 200' do
@@ -89,7 +89,9 @@ RSpec.describe 'Universities API', type: :request do
     end
 
     context 'when the university does not exists' do
-      before { patch "/#{api_version}/universities/999999", params: { university: { name: 'Universidade Federal da Caixa Bozó' } } }
+      before do 
+        patch "/#{api_version}/universities/999999", params: { university: { name: 'Universidade Federal da Caixa Bozó' } }
+      end
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
@@ -116,6 +118,37 @@ RSpec.describe 'Universities API', type: :request do
       before { delete "/#{api_version}/universities/999999", params: {}, headers: headers }
 
       it 'returns status code 204' do
+        expect(response).to have_http_status(404)
+      end
+    end
+  end
+
+  describe 'FIND_BY_ACRONYM /universities/find_by_acronym/university[:acronym]' do
+    context 'when the university exists' do
+      let(:university) { create(:university) }
+      
+      before do
+        get "/#{api_version}/universities/find_by_acronym", params: { university: { acronym: university.acronym } }, headers: headers
+      end
+
+      it 'returns the university' do
+        parsed_response = JSON.parse(response.body)
+        expect(parsed_response['id']).to eq(university.id)
+      end
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'when the university does not exists' do
+      let(:university) { create(:university) }
+      
+      before do
+        get "/#{api_version}/universities/find_by_acronym", params: { university: { acronym: university.acronym+'zzz' } }, headers: headers
+      end
+
+      it 'returns status code 404' do
         expect(response).to have_http_status(404)
       end
     end
