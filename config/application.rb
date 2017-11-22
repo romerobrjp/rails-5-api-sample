@@ -32,5 +32,12 @@ module Punkapi
 
     # redis config
     config.cache_store = :redis_store, "redis://#{ENV['REDIS_HOST']}/#{ENV['REDIS_PORT']}/0/cache", { expires_in: 90.minutes }
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options, :put, :patch, :delete]
+      end
+    end
   end
 end
