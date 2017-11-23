@@ -5,6 +5,9 @@
 - rbenv 1.1.1-6-g2d7cefe
 - Rails 5.1.4
 
+## Diagram ER
+https://imgur.com/a/FPZ3H
+
 ## Testes
 - Utilizei FactoryBot (antigo FactoryGirl) para substituir as fixtures
 - Foram feitos testes unitários e de integração (request specs).
@@ -31,9 +34,8 @@ Randomized with seed 49082
 - `redis-server`
 
 ## Banco de dados
-Foi utilizado o PostgreSQL. Lembre-se de alterar as configurações para o banco no arquivo .env
-- Se desejar, existem seeds preparadas para popular o banco no arquivos seeds.rb
-- Diagram ER: https://imgur.com/a/FPZ3H
+- Foi utilizado o PostgreSQL. Lembre-se de alterar as configurações para o banco no arquivo .env
+- Se desejar, existem seeds preparadas para popular o banco no arquivo seeds.rb
 
 ## Requisições para a API
 - A URL base é http://punkapi.com:3000/v2
