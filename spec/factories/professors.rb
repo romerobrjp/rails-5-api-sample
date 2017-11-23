@@ -15,5 +15,9 @@ FactoryBot.define do
 
     factory :male_professor, traits: [:male]
     factory :female_professor, traits: [:female]
+
+    factory :professor_with_disciplines do 
+      disciplines { FactoryBot.create_list(:discipline, 5) }
+    end
   end
 end
