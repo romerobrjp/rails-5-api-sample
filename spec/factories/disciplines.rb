@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :discipline do
-    name { Faker::Job.field }
+    name { |n| "#{Faker::Job.field}_#{n}" }
     description { Faker::Job.title }
   end
 end
