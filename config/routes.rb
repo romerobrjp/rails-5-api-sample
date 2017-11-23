@@ -7,7 +7,6 @@ Rails.application.routes.draw do
       resources :campuses
       resources :professors
       resources :disciplines
-      resources :documentation
     end
 
     namespace :v2, constraints: ApiVersionConstraint.new(version: 2, default: true) do
@@ -18,9 +17,17 @@ Rails.application.routes.draw do
         get :find_by_name, to: 'campuses#find_by_name', on: :collection
         get :find_by_city, to: 'campuses#find_by_city', on: :collection
       end
-      resources :professors
-      resources :disciplines
-      resources :documentation
+      resources :professors do
+        get :find_by_name, to: 'professors#find_by_name', on: :collection
+        get :find_by_university_name, to: 'professors#find_by_university_name', on: :collection
+        get :find_by_university_acronym, to: 'professors#find_by_university_acronym', on: :collection
+        get :find_by_formation_area, to: 'professors#find_by_formation_area', on: :collection
+      end
+      resources :disciplines do
+        get :find_by_name, to: 'disciplines#find_by_name', on: :collection
+        get :find_by_description, to: 'disciplines#find_by_description', on: :collection
+        get :find_by_professor_name, to: 'disciplines#find_by_professor_name', on: :collection
+      end
     end
   end
 end
