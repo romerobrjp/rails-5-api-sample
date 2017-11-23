@@ -46,9 +46,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'rack-cors'
+gem 'rack-attack'
+
 gem 'redis'
 gem 'redis-namespace'
 gem 'redis-rails'
 gem 'redis-rack-cache'
-gem 'rack-cors'
+
 gem 'swagger-docs'
