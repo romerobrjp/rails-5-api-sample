@@ -42,7 +42,7 @@ Randomized with seed 49082
 - É preciso enviar o cabeçalho Accept com o seguinte valor: application/fractal.punk.v2 (esta foi um pequena medida de segurança para não deixar a API tão aberta a qualquer um)
 
 ## Redis
-- Utilizei REDIS para cache. Implementei como exemplo em cada action index dos controllers.
+- Implementei, como exemplo, cada action index dos controllers utilizando Redis.
 - Após rodar o bundle install para instalar as gems referentes ao Redis, startar o servidor do redis numa outra aba do terminal através do comando `redis-server`
 
 ## Observações
