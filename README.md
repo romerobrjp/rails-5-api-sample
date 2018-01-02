@@ -15,10 +15,10 @@ https://imgur.com/a/FPZ3H
 - I used the gem 'spring-commands-rspec' to speed up the tests loading and execution.
 - Run the tests with `bundle exec spring rspec`. You should see something like that:
 
-`Finished in 2.28 seconds (files took 0.26843 seconds to load)
+Finished in 2.28 seconds (files took 0.26843 seconds to load)
 129 examples, 0 failures
 
-Randomized with seed 49082`
+Randomized with seed 49082
 
 ## How to run
 - Clone this repo
